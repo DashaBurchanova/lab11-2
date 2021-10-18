@@ -1,0 +1,28 @@
+body {
+    background: url(bg.png) no-repeat;
+    color: aliceblue;
+    font-family: montserrat;
+    margin-left: 200px;
+}
+
+.hover06 figure img {
+  -webkit-transform: rotate(15deg) scale(1.4);
+  transform: rotate(15deg) scale(1.4);
+  -webkit-transition: .3s ease-in-out;
+  transition: .3s ease-in-out;
+}
+.hover06 figure:hover img {
+  -webkit-transform: rotate(0) scale(1);
+  transform: rotate(0) scale(1);
+}
+
+
+.hover06 {
+    display: flex;
+    flex-direction: row;
+    padding-top: 150px;
+}
+
+.text {
+    font-size: 20px;
+}

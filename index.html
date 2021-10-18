@@ -1,0 +1,119 @@
+<html>
+    <head>
+        <title>Лаб 11</title>    
+        <meta http-equiv="content-type" content="text/html">
+        <meta charset="utf-8">
+        <link rel=stylesheet href="style.css" type="text/css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    </head>
+    <body>
+<script type="text/javascript">
+// Заголовок страницы (h1)
+var title = 'Тест!';
+// Подзаголовок (h2)
+var subtitle = "Этот тест позволяет оценить <br>Ваши знания о Саше Дмитриенко";
+// Это ваши вопросы
+var questions=[
+{
+	text: "Саша из города:",
+	answers: ["Минск",
+		  "Жлобин",
+		  "Добруш"],
+	correctAnswer: 2 // нумерация ответов с нуля!
+},
+{
+	text: "Знак зодиака:",
+	answers: ["Стрелец",
+		  "Овен",
+		  "Рыбы"],
+	correctAnswer: 1
+},
+{
+	text: "Отчество:",
+	answers: ["Николаевич",
+		  "Владимирович",
+		  "Александрович"],
+	correctAnswer: 0
+}
+];
+
+var yourAns = new Array;
+var score = 0;
+
+function Engine(question, answer) {yourAns[question]=answer;}
+
+function Score(){
+   var answerText = "Результаты:\n";
+   for(var i = 0; i < yourAns.length; ++i){
+	var num = i+1;
+	answerText=answerText+"\n    Вопрос №"+ num +"";
+	if(yourAns[i]!=questions[i].correctAnswer){
+	    answerText=answerText+"\n    Правильный ответ: " +
+		questions[i].answers[questions[i].correctAnswer] + "\n";
+	  }
+        else{
+	    answerText=answerText+": Верно! \n";
+	    ++score;
+	    }
+       }
+
+   answerText=answerText+"\nВсего правильных ответов: "+score+"\n";
+
+   alert(answerText);
+   yourAns = [];
+   score = 0;
+   clearForm("quiz");
+}
+function clearForm(name) {
+   var f = document.forms[name];
+   for(var i = 0; i < f.elements.length; ++i) {
+	if(f.elements[i].checked)
+		f.elements[i].checked = false;
+}
+}
+</script>
+
+<style>
+span.quest {font-weight: bold;}
+</style>
+
+<h1><script>document.write(title)</script></h1>
+<h2><script>document.write(subtitle)</script></h2>
+
+<form name="quiz">
+<ol>
+<script>
+for(var q=0; q<questions.length; ++q) {
+   var question = questions[q];
+   var idx = 1 + q;
+
+   document.writeln('<li><span class="quest">' + question.text + '</span><br/>');
+   for(var i in question.answers) {
+	document.writeln('<input type=radio name="q' + idx + '" value="' + i +
+	'" onClick="Engine(' + q + ', this.value)">' + question.answers[i] + '<br/>');
+}
+}
+</script>
+</ol>
+<input type="button" onClick="Score()" value="Проверить результаты" />
+
+</form>
+        <div class="block">
+            <div class="text">Саша рад, что Вы посетили сайт, посвященный ему, поэтому вот несколько его фото! <b>Попробуйте навести на них курсор!</b> </div>
+            <div class="hover06 column">
+             <div>
+                <figure><img src="sasha1.jpg" width="300" /></figure>
+              </div>
+              <div>
+                <figure><img src="sasha2.jpg" width="300" /></figure>
+              </div>
+              <div>
+                <figure><img src="sasha3.PNG" width="300" /></figure>
+                </div>
+                
+            </div>
+        </div>
+    </body>
+</html>
